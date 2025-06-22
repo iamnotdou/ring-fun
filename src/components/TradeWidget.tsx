@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -14,7 +14,7 @@ export default function TradeWidget() {
 
   // Bonding curve parameters
   const INITIAL_VIRTUAL_LIQUIDITY = 1000000
-  const TARGET_VIRTUAL_LIQUIDITY = 500000
+  // const TARGET_VIRTUAL_LIQUIDITY = 500000
   const INITIAL_RESERVE_X = 1000000
 
   const [currentReserveX, setCurrentReserveX] = useState(INITIAL_RESERVE_X)
@@ -24,10 +24,10 @@ export default function TradeWidget() {
 
   const k = currentReserveX * currentVirtualY
 
-  const bondingCurveProgress =
-    ((INITIAL_VIRTUAL_LIQUIDITY - currentVirtualY) /
-      (INITIAL_VIRTUAL_LIQUIDITY - TARGET_VIRTUAL_LIQUIDITY)) *
-    100
+  // const bondingCurveProgress =
+  //   ((INITIAL_VIRTUAL_LIQUIDITY - currentVirtualY) /
+  //     (INITIAL_VIRTUAL_LIQUIDITY - TARGET_VIRTUAL_LIQUIDITY)) *
+  //   100
 
   const currentPrice = currentVirtualY / currentReserveX
 
