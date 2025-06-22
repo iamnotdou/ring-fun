@@ -1,8 +1,8 @@
 function Footer() {
   return (
     <footer>
-      <div className="borderb relative mx-auto max-w-6xl overflow-hidden border-white px-4 py-12 xl:overflow-visible xl:px-0">
-        <div className="relative grid grid-cols-1 gap-8 pb-24 lg:grid-cols-3">
+      <div className="borderb relative mx-auto max-w-6xl overflow-hidden border-white px-4 xl:overflow-visible xl:px-0">
+        <div className="relative grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="text-white">
             <a href="/" className="flex items-center gap-2 text-sm text-white">
               <span className="sr-only">Go to homepage</span>
@@ -121,10 +121,6 @@ function Footer() {
             </p>
           </div>
         </div>
-        {/* <div
-          aria-hidden="true"
-          className="bg-light-vertical-stripes clip-rect-inset pointer-events-none -mx-px mt-auto aspect-12/4 p-20"
-        /> */}
       </div>
     </footer>
   )

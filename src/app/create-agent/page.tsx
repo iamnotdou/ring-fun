@@ -97,7 +97,36 @@ export default function CreateAgentPage() {
         // Final submission
         const finalData = { ...formData, ...stepData }
         console.log("Final form data:", finalData)
-        // Handle form submission here
+
+        try {
+          const response = await fetch("/api/agents", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(finalData),
+          })
+
+          if (response.ok) {
+            const createdAgent = await response.json()
+            console.log("Agent created successfully:", createdAgent)
+            // You can redirect or show success message here
+            alert("Agent created successfully!")
+            // Reset form
+            setCurrentStep(0)
+            setFormData({})
+            step1Form.reset()
+            step2Form.reset()
+            step3Form.reset()
+          } else {
+            const errorData = await response.json()
+            console.error("Error creating agent:", errorData)
+            alert(`Error: ${errorData.error}`)
+          }
+        } catch (error) {
+          console.error("Network error:", error)
+          alert("Network error. Please try again.")
+        }
       }
     }
   }
@@ -289,6 +318,33 @@ export default function CreateAgentPage() {
                         </FormControl>
                         <FormDescription className="text-base-500">
                           Choose a memorable name for your agent
+                        </FormDescription>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  {/* Ticker */}
+                  <FormField
+                    control={step1Form.control}
+                    name="ticker"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-base-300">
+                          Ticker Symbol
+                        </FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder="Enter ticker (e.g., ALEX)"
+                            className="border-base-600 placeholder:text-base-400 text-white uppercase"
+                            {...field}
+                            onChange={(e) =>
+                              field.onChange(e.target.value.toUpperCase())
+                            }
+                          />
+                        </FormControl>
+                        <FormDescription className="text-base-500">
+                          Unique ticker symbol for your agent (uppercase only)
                         </FormDescription>
                         <FormMessage />
                       </FormItem>

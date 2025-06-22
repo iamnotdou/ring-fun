@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link"
 import ConnectWalletUI from "@/components/ConnectWalletUI"
 import { Button } from "@/components/ui/button"
@@ -302,6 +304,13 @@ function Header() {
               <div className="relative flex flex-col gap-2 md:mr-auto md:flex-row md:gap-4">
                 <Button className="cursor-pointer rounded-full" asChild>
                   <Link href="/create-agent">Create Agent</Link>
+                </Button>
+                <Button
+                  variant="outline"
+                  className="cursor-pointer rounded-full"
+                  asChild
+                >
+                  <Link href="/agents">View Agents</Link>
                 </Button>
               </div>
               <div className="mt-auto flex flex-wrap items-center gap-2">
