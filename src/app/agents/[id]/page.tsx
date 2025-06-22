@@ -5,6 +5,7 @@ import { useParams } from "next/navigation"
 import { Agent } from "@/components/AgentCard"
 import { LastPrice } from "@/components/price"
 import { PythChart } from "@/components/pyth-chart"
+import TradeWidget from "@/components/TradeWidget"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { CardContent } from "@/components/ui/card"
@@ -149,20 +150,27 @@ export default function AgentDetailPage() {
               </TabsTrigger>
             </TabsList>
             <TabsContent value="trade">
-              <div className="w-full">
-                <div className="flex flex-row items-start justify-between space-y-0 px-4 py-5 sm:py-6 md:px-6">
-                  <div className="flex flex-1 flex-col justify-center gap-1">
-                    <div className="text-base-400">{agent.ticker} last 30d</div>
+              <div className="grid grid-cols-12">
+                <div className="col-span-7 w-full">
+                  <div className="flex flex-row items-start justify-between space-y-0 px-4 py-5 sm:py-6 md:px-6">
+                    <div className="flex flex-1 flex-col justify-center gap-1">
+                      <div className="text-base-400">
+                        {agent.ticker} last 30d
+                      </div>
+                    </div>
+                    <LastPrice benchmark={chartData} />
                   </div>
-                  <LastPrice benchmark={chartData} />
+                  <CardContent className="w-full px-2 sm:p-6">
+                    <div className="flex aspect-auto h-[400px] w-full flex-col items-center justify-center">
+                      <Suspense fallback={<ChartSkeleton />}>
+                        <PythChart benchmark={Promise.resolve(chartData)} />
+                      </Suspense>
+                    </div>
+                  </CardContent>
                 </div>
-                <CardContent className="w-full px-2 sm:p-6">
-                  <div className="flex aspect-auto h-[400px] w-full flex-col items-center justify-center">
-                    <Suspense fallback={<ChartSkeleton />}>
-                      <PythChart benchmark={Promise.resolve(chartData)} />
-                    </Suspense>
-                  </div>
-                </CardContent>
+                <div className="col-span-5 p-6">
+                  <TradeWidget />
+                </div>
               </div>
             </TabsContent>
             <TabsContent value="chat">
