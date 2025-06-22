@@ -56,7 +56,7 @@ export default function AgentList({ agents, onAgentClick }: AgentListProps) {
       {filteredAndSortedAgents.length > 0 ? (
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {filteredAndSortedAgents.map((agent) => (
-            <AgentCard key={agent.id} agent={agent} onClick={onAgentClick} />
+            <AgentCard key={agent._id} agent={agent} onClick={onAgentClick} />
           ))}
         </div>
       ) : (

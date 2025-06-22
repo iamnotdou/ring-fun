@@ -2,7 +2,7 @@ import Link from "next/link"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 export interface Agent {
-  id: string
+  _id: string
   name: string
   ticker: string
   avatar?: string
