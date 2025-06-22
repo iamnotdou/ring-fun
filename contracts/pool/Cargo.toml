@@ -1,0 +1,24 @@
+[package]
+name = "pool"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["lib", "cdylib"]
+doctest = false
+
+[dependencies]
+soroban-sdk = { workspace = true }
+stellar-constants = { workspace = true }
+stellar-default-impl-macro = { workspace = true }
+stellar-fungible = { workspace = true }
+stellar-non-fungible = { workspace = true }
+stellar-pausable = { workspace = true }
+stellar-pausable-macros = { workspace = true }
+stellar-upgradeable = { workspace = true }
+stellar-upgradeable-macros = { workspace = true }
+fungible_token = { path = "../fungible_token" }
+
+[dev-dependencies]
+soroban-sdk = { workspace = true, features = ["testutils"] }

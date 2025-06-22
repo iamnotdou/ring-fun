@@ -31,6 +31,7 @@ import {
   Step3Form,
   step3Schema,
 } from "@/lib/schemas"
+import { usePoolDeploy } from "@/hooks/usePoolFactory"
 
 interface AgentCreationResponse {
   _id: string
@@ -45,9 +46,19 @@ const STEPS = [
 
 export default function CreateAgentPage() {
   const router = useRouter()
+  const { deploy } = usePoolDeploy()
   const [currentStep, setCurrentStep] = useState(0)
   const [formData, setFormData] = useState<Partial<CreateAgentForm>>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const onDeploy = async () => {
+    console.log("asd")
+    const data = await deploy({
+      name: "",
+      symbol: "",
+    })
+    console.log(data)
+  }
 
   // Step 1 Form
   const step1Form = useForm<Step1Form>({
@@ -105,6 +116,13 @@ export default function CreateAgentPage() {
         // Final submission
         const finalData = { ...formData, ...stepData }
         setIsSubmitting(true)
+
+        const data = await deploy({
+          name: finalData.name || "",
+          symbol: finalData.ticker || "",
+        })
+        console.log(data)
+
         const promise = (): Promise<AgentCreationResponse> =>
           new Promise(async (resolve, reject) => {
             try {
@@ -195,6 +213,7 @@ export default function CreateAgentPage() {
               </p>
             </div>
 
+            <Button onClick={() => onDeploy()}>deploy</Button>
             {/* Progress */}
             <div className="mb-8">
               <div className="mb-2 flex items-center justify-between">
