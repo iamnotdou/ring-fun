@@ -22,7 +22,7 @@ function Hero() {
         />
         <div className="relative text-center text-balance">
           <h1 className="font-display text-4xl tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
-            Because you're too smart for slow, Fake-Sounding AI
+            Because you&apos;re too smart for slow, Fake-Sounding AI
           </h1>
           <p className="text-base-400 mx-auto mt-4 max-w-xl text-base">
             Runs on brain-melting math you’ll never have to touch. Built for

@@ -61,7 +61,6 @@ export default function CreateAgentPage() {
     },
   })
 
-  // Step 3 Form
   const step3Form = useForm<Step3Form>({
     resolver: zodResolver(step3Schema),
     defaultValues: {
@@ -178,32 +177,6 @@ export default function CreateAgentPage() {
       <main>
         <div className="relative flex flex-col justify-between overflow-hidden">
           {/* Background Pattern */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 hidden opacity-20 md:block"
-          >
-            <div className="grid w-full grid-cols-3 lg:grid-cols-6">
-              {Array.from({ length: 24 }).map((_, i) => (
-                <div
-                  key={i}
-                  aria-hidden="true"
-                  className={`pointer-events-none aspect-square size-full ${
-                    i % 6 === 0
-                      ? "bg-meshMagenta"
-                      : i % 6 === 1
-                        ? "bg-base-vertical-stripes"
-                        : i % 6 === 2
-                          ? "bg-accent-horizontal-stripes"
-                          : i % 6 === 3
-                            ? "bg-base-900"
-                            : i % 6 === 4
-                              ? "bg-base-horizontal-stripes"
-                              : "bg-meshGreen"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
 
           <div className="relative mx-auto w-full max-w-2xl py-12 backdrop-blur-3xl md:px-8">
             {/* Header */}
@@ -230,30 +203,6 @@ export default function CreateAgentPage() {
               <Progress value={progress} className="h-2" />
             </div>
 
-            {/* Step Indicators */}
-            {/* <div className="mb-8 flex items-center justify-between">
-              {STEPS.map((step, index) => (
-                <div key={index} className="flex flex-col items-center">
-                  <div
-                    className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-medium ${
-                      index <= currentStep
-                        ? "bg-accent-600 text-white"
-                        : "bg-base-800 text-base-400"
-                    }`}
-                  >
-                    {index + 1}
-                  </div>
-                  <p className="mt-2 text-center text-xs">
-                    <span className="font-medium text-white">{step.title}</span>
-                    <br />
-                    <span className="text-base-400">{step.description}</span>
-                  </p>
-                </div>
-              ))}
-            </div> */}
-
-            {/* Form Content */}
-            {/* Step 1: Basic Info */}
             {currentStep === 0 && (
               <Form {...step1Form}>
                 <form className="space-y-6">
@@ -368,7 +317,7 @@ export default function CreateAgentPage() {
                           />
                         </FormControl>
                         <FormDescription className="text-base-500">
-                          Define your agent's core behavior and interaction
+                          Define your agent&apos;s core behavior and interaction
                           style
                         </FormDescription>
                         <FormMessage />
@@ -542,8 +491,8 @@ export default function CreateAgentPage() {
                           </div>
                         </FormControl>
                         <FormDescription className="text-base-500">
-                          Describe your agent's personality traits (press Enter
-                          to add)
+                          Describe your agent&apos;s personality traits (press
+                          Enter to add)
                         </FormDescription>
                         <FormMessage />
                       </FormItem>
@@ -598,7 +547,7 @@ export default function CreateAgentPage() {
                           />
                         </FormControl>
                         <FormDescription className="text-base-500">
-                          Define your agent's approach to conversations and
+                          Define your agent&apos;s approach to conversations and
                           interactions
                         </FormDescription>
                         <FormMessage />

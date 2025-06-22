@@ -1,9 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Search, SortDesc } from "lucide-react"
+import { Search } from "lucide-react"
 
 import AgentCard, { Agent } from "./AgentCard"
 
@@ -14,9 +13,6 @@ interface AgentListProps {
 
 export default function AgentList({ agents, onAgentClick }: AgentListProps) {
   const [searchTerm, setSearchTerm] = useState("")
-  const [sortBy, setSortBy] = useState<"name" | "marketCap" | "recent">(
-    "marketCap"
-  )
 
   const filteredAndSortedAgents = agents
     .filter(
@@ -27,18 +23,7 @@ export default function AgentList({ agents, onAgentClick }: AgentListProps) {
           topic.toLowerCase().includes(searchTerm.toLowerCase())
         )
     )
-    .sort((a, b) => {
-      switch (sortBy) {
-        case "name":
-          return a.name.localeCompare(b.name)
-        case "marketCap":
-          return b.marketCap - a.marketCap
-        case "recent":
-          return 0 // For now, as we don't have creation date
-        default:
-          return 0
-      }
-    })
+    .sort((a, b) => b.marketCap - a.marketCap)
 
   return (
     <div className="w-full p-10">

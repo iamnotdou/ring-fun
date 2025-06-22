@@ -3,6 +3,15 @@ import Agent from "@/models/Agent"
 
 import dbConnect from "@/lib/mongodb"
 
+// Type definitions for error handling
+interface MongooseValidationError extends Error {
+  errors: Record<string, { message: string }>
+}
+
+interface MongoError extends Error {
+  code: number
+}
+
 // GET /api/agents - Fetch all agents
 export async function GET(request: NextRequest) {
   try {
@@ -107,14 +116,14 @@ export async function POST(request: NextRequest) {
     await agent.save()
 
     return NextResponse.json(agent, { status: 201 })
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error creating agent:", error)
 
     // Handle validation errors
-    if (error.name === "ValidationError") {
-      const validationErrors = Object.values(error.errors).map(
-        (err: any) => err.message
-      )
+    if (error instanceof Error && error.name === "ValidationError") {
+      const validationErrors = Object.values(
+        (error as MongooseValidationError).errors
+      ).map((err) => err.message)
       return NextResponse.json(
         { error: "Validation failed", details: validationErrors },
         { status: 400 }
@@ -122,7 +131,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Handle duplicate key error (ticker)
-    if (error.code === 11000) {
+    if (error instanceof Error && (error as MongoError).code === 11000) {
       return NextResponse.json(
         { error: "Ticker already exists" },
         { status: 409 }
