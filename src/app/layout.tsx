@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google"
 
 import "./globals.css"
 
+import { Toaster } from "@/components/ui/sonner"
+
 import Footer from "./base/Footer"
 import Header from "./base/Header"
 
@@ -34,6 +36,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <Toaster />
       </body>
     </html>
   )
