@@ -41,6 +41,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --color-base-950: oklch(0.145 0 0);
+  --color-base-900: oklch(0.205 0 0);
 }
 
 :root {
@@ -110,6 +112,62 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --repeating-linear-gradient: repeating-linear-gradient(
+    to right,
+    oklch(26.9% 0 0) 0px,
+    oklch(26.9% 0 0) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+  --background-image-base-vertical-stripes: repeating-linear-gradient(
+    to right,
+    oklch(26.9% 0 0) 0px,
+    oklch(26.9% 0 0) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+  --background-image-accent-vertical-stripes: repeating-linear-gradient(
+    to right,
+    oklch(50.89% 0.233 290.96) 0px,
+    oklch(50.89% 0.233 290.96) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+  --background-image-light-vertical-stripes: repeating-linear-gradient(
+    to right,
+    oklch(98.5% 0 0) 0px,
+    oklch(98.5% 0 0) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+  --background-image-base-horizontal-stripes: repeating-linear-gradient(
+    to bottom,
+    oklch(26.9% 0 0) 0px,
+    oklch(26.9% 0 0) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+  --background-image-pink-horizontal-stripes: repeating-linear-gradient(
+    to bottom,
+    #f6a098 0px,
+    #f6a098 1px,
+    transparent 1px,
+    transparent 8px
+  );
+  --background-image-accent-horizontal-stripes: repeating-linear-gradient(
+    to bottom,
+    oklch(50.89% 0.233 290.96) 0px,
+    oklch(50.89% 0.233 290.96) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+  --background-image-light-horizontal-stripes: repeating-linear-gradient(
+    to bottom,
+    oklch(98.5% 0 0) 0px,
+    oklch(98.5% 0 0) 1px,
+    transparent 1px,
+    transparent 8px
+  );
 }
 
 @layer base {
@@ -118,5 +176,24 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  .bg-base-vertical-stripes {
+    background-image: var(--repeating-linear-gradient);
+  }
+  .bg-accent-vertical-stripes {
+    background-image: var(--background-image-accent-vertical-stripes);
+  }
+  .bg-light-vertical-stripes {
+    background-image: var(--background-image-light-vertical-stripes);
+  }
+  .bg-base-horizontal-stripes {
+    background-image: var(--background-image-base-horizontal-stripes);
+  }
+  .bg-accent-horizontal-stripes {
+    background-image: var(--background-image-accent-horizontal-stripes);
+  }
+  .bg-light-horizontal-stripes {
+    background-image: var(--background-image-light-horizontal-stripes);
   }
 }
