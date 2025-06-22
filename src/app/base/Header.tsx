@@ -139,13 +139,6 @@ function Header() {
                 <Button className="cursor-pointer rounded-full" asChild>
                   <Link href="/create-agent">Create Agent</Link>
                 </Button>
-                <Button
-                  variant="outline"
-                  className="cursor-pointer rounded-full"
-                  asChild
-                >
-                  <Link href="/agents">View Agents</Link>
-                </Button>
               </div>
               <div className="mt-auto flex flex-wrap items-center gap-2">
                 <ConnectWalletUI />

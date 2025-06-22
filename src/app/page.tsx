@@ -1,28 +1,103 @@
+"use client"
+
+import { useEffect, useState } from "react"
+import { Agent } from "@/components/AgentCard"
 import AgentList from "@/components/AgentList"
 
 import Hero from "./Sections/Hero"
 
 export default function Home() {
+  const [agents, setAgents] = useState<Agent[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  const fetchAgents = async () => {
+    try {
+      setLoading(true)
+      const response = await fetch(
+        "/api/agents?limit=50&sortBy=marketCap&sortOrder=desc"
+      )
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch agents")
+      }
+
+      const data = await response.json()
+      setAgents(data.agents)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to fetch agents")
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchAgents()
+  }, [])
+
+  const handleAgentClick = (agent: Agent) => {
+    console.log("Clicked agent:", agent)
+  }
+
+  if (loading) {
+    return (
+      <div className="border-base-800 mx-auto w-full max-w-6xl border-b xl:border-x">
+        <Hero />
+        <main>
+          <div className="relative flex flex-col justify-between overflow-hidden">
+            <div className="relative mx-auto w-full py-12 backdrop-blur-3xl">
+              <div className="flex min-h-[50vh] items-center justify-center">
+                <div className="text-center">
+                  <div className="border-accent-600 mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-b-2"></div>
+                  <p className="text-white">Loading agents...</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="border-base-800 mx-auto w-full max-w-6xl border-b xl:border-x">
+        <Hero />
+        <main>
+          <div className="relative flex flex-col justify-between overflow-hidden">
+            <div className="relative mx-auto w-full py-12 backdrop-blur-3xl">
+              <div className="flex min-h-[50vh] items-center justify-center">
+                <div className="text-center">
+                  <div className="mb-4 text-6xl text-red-400">⚠️</div>
+                  <h2 className="mb-2 text-xl font-semibold text-white">
+                    Error Loading Agents
+                  </h2>
+                  <p className="text-base-400 mb-4">{error}</p>
+                  <button
+                    onClick={fetchAgents}
+                    className="bg-accent-600 hover:bg-accent-700 rounded-md px-4 py-2 text-white"
+                  >
+                    Try Again
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    )
+  }
+
   return (
     <div className="border-base-800 mx-auto w-full max-w-6xl border-b xl:border-x">
       <Hero />
-      <AgentList
-        agents={[
-          {
-            name: "Agent 1",
-            ticker: "AGNT1",
-            marketCap: 1000000,
-            topics: ["Topic 1", "Topic 2", "Topic 3"],
-            personalityTraits: ["Trait 1", "Trait 2", "Trait 3"],
-            writingStyle: "Style 1",
-            avatar: "https://via.placeholder.com/150",
-            bio: "Bio 1",
-            id: "1",
-            chatStyle: "Style 1",
-            agentBehavior: "Behavior 1",
-          },
-        ]}
-      />
+      <main>
+        <div className="relative flex flex-col justify-between overflow-hidden">
+          <div className="relative mx-auto w-full py-12 backdrop-blur-3xl">
+            <AgentList agents={agents} onAgentClick={handleAgentClick} />
+          </div>
+        </div>
+      </main>
     </div>
   )
 }
