@@ -22,6 +22,7 @@ export default function AgentsPage() {
 
       const data = await response.json()
       setAgents(data.agents)
+      console.log(data.agents)
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to fetch agents")
     } finally {
@@ -43,34 +44,6 @@ export default function AgentsPage() {
       <div className="border-base-800 mx-auto w-full max-w-6xl border-b xl:border-x">
         <main>
           <div className="relative flex flex-col justify-between overflow-hidden">
-            {/* Background Pattern */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 hidden opacity-20 md:block"
-            >
-              <div className="grid w-full grid-cols-3 lg:grid-cols-6">
-                {Array.from({ length: 24 }).map((_, i) => (
-                  <div
-                    key={i}
-                    aria-hidden="true"
-                    className={`pointer-events-none aspect-square size-full ${
-                      i % 6 === 0
-                        ? "bg-meshMagenta"
-                        : i % 6 === 1
-                          ? "bg-base-vertical-stripes"
-                          : i % 6 === 2
-                            ? "bg-accent-horizontal-stripes"
-                            : i % 6 === 3
-                              ? "bg-base-900"
-                              : i % 6 === 4
-                                ? "bg-base-horizontal-stripes"
-                                : "bg-meshGreen"
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
-
             <div className="relative mx-auto w-full py-12 backdrop-blur-3xl">
               <div className="flex min-h-[50vh] items-center justify-center">
                 <div className="text-center">
@@ -90,34 +63,6 @@ export default function AgentsPage() {
       <div className="border-base-800 mx-auto w-full max-w-6xl border-b xl:border-x">
         <main>
           <div className="relative flex flex-col justify-between overflow-hidden">
-            {/* Background Pattern */}
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 hidden opacity-20 md:block"
-            >
-              <div className="grid w-full grid-cols-3 lg:grid-cols-6">
-                {Array.from({ length: 24 }).map((_, i) => (
-                  <div
-                    key={i}
-                    aria-hidden="true"
-                    className={`pointer-events-none aspect-square size-full ${
-                      i % 6 === 0
-                        ? "bg-meshMagenta"
-                        : i % 6 === 1
-                          ? "bg-base-vertical-stripes"
-                          : i % 6 === 2
-                            ? "bg-accent-horizontal-stripes"
-                            : i % 6 === 3
-                              ? "bg-base-900"
-                              : i % 6 === 4
-                                ? "bg-base-horizontal-stripes"
-                                : "bg-meshGreen"
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
-
             <div className="relative mx-auto w-full py-12 backdrop-blur-3xl">
               <div className="flex min-h-[50vh] items-center justify-center">
                 <div className="text-center">
@@ -145,34 +90,6 @@ export default function AgentsPage() {
     <div className="border-base-800 mx-auto w-full max-w-6xl border-b xl:border-x">
       <main>
         <div className="relative flex flex-col justify-between overflow-hidden">
-          {/* Background Pattern */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 hidden opacity-20 md:block"
-          >
-            <div className="grid w-full grid-cols-3 lg:grid-cols-6">
-              {Array.from({ length: 24 }).map((_, i) => (
-                <div
-                  key={i}
-                  aria-hidden="true"
-                  className={`pointer-events-none aspect-square size-full ${
-                    i % 6 === 0
-                      ? "bg-meshMagenta"
-                      : i % 6 === 1
-                        ? "bg-base-vertical-stripes"
-                        : i % 6 === 2
-                          ? "bg-accent-horizontal-stripes"
-                          : i % 6 === 3
-                            ? "bg-base-900"
-                            : i % 6 === 4
-                              ? "bg-base-horizontal-stripes"
-                              : "bg-meshGreen"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-
           <div className="relative mx-auto w-full py-12 backdrop-blur-3xl">
             <AgentList agents={agents} onAgentClick={handleAgentClick} />
           </div>
