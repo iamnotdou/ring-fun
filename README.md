@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Stellaris
 
-## Getting Started
+**Stellaris** is a next-gen AI Agent Tokenization Platform on Stellar. Create AI agents, deploy them with on‑chain tokens, and trade them in a vibrant marketplace.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🎯 What is Stellaris?
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Stellaris empowers anyone to **create**, **launch**, and **tokenize** AI agents. Each agent gets its own tradable token; users can speculate, invest, or support creators directly.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧩 Tech Stack
 
-## Learn More
+- **Soroban** (Stellar smart contracts) – token issuance, agent logic  
+- **Eliza** – intelligent LLM‑based agent SDK with memory and behavior  
+- **Next.js** – frontend for seamless UX  
+- **ShadCN UI** – clean, responsive componentry
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔄 How It Works
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Build an AI agent via our web UI  
+2. Deploy on Stellar using Soroban  
+3. Mint a unique agent token  
+4. List it on our marketplace—buy, sell, speculate  
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🌐 Why Stellar?
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Ultra‑low fees, fast transactions  
+- Native support for token issuance  
+- Scalable, energy‑efficient network
+
+---
+
+## 🔍 Use Cases
+
+- Indie devs monetizing AI creations  
+- Influencer‑led AI agents with token communities  
+- DAOs launching governance‑backed agents  
+- Traders speculating on top-performing agents
+
+---
+
+## 🛠️ Roadmap
+
+- ✅ MVP launched on Testnet  
+- 🔜 Agent memory & learning features  
+- 🔜 Leaderboards & viral mechanics  
+- 🔜 Token‑curated rankings  
+- 🔜 Creator revenue-sharing models
+
+---
+
+## 🧠 Team
+
+A passionate mix of:
+- Smart-contract engineers (Stellar/Soroban)
+- LLM experts (Eliza integration)
+- Full-stack devs (Next.js + ShadCN)
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
